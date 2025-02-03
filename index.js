@@ -18,8 +18,9 @@ app.use('/api', orderRoutes);
 // Connect to MongoDB
 mongoose.connect('mongodb+srv://Thasniem:thfjd150@mycluster.0ivtg.mongodb.net/?retryWrites=true&w=majority&appName=MyCluster
 ')
-    .then(() => console.log('MongoDB Connected'))
-    .catch(err => console.log(err));
+    .then(()=> console.log('database connected..'))
+    .catch((err) => console.log(err))
+
 app.get('/', (req, res)=>{
      res.send('server reacted...')
  })
