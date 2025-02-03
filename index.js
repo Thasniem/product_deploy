@@ -1,0 +1,30 @@
+const express = require('express');
+const mongoose = require('mongoose');
+const app = express();
+const port = 5000;  // Hardcoded port
+
+// MongoDB URI (hardcoded)
+const mongoUri = 'mongodb://localhost:27017/onlinebookstore';  // Change this if needed
+
+// Import routes
+const bookRoutes = require('./routes/bookRoutes');
+const userRoutes = require('./routes/userRoutes');
+const orderRoutes = require('./routes/orderRoutes');
+
+// Middleware
+app.use(express.json());  // To parse JSON bodies
+
+// Routes
+app.use('/api', bookRoutes);
+app.use('/api', userRoutes);
+app.use('/api', orderRoutes);
+
+// Connect to MongoDB
+mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('MongoDB Connected'))
+    .catch(err => console.log(err));
+
+// Start the server
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+});
