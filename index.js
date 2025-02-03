@@ -24,6 +24,9 @@ app.use('/api', orderRoutes);
 mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log(err));
+app.get('/', (req, res)=>{
+     res.send('server reacted...')
+ })
 
 // Start the server
 app.listen(port, () => {
