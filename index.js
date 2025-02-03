@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const port = 5000;  // Hardcoded port
+
 // Import routes
 const bookRoutes = require('./routes/bookRoutes');
 const userRoutes = require('./routes/userRoutes');
@@ -15,17 +16,18 @@ app.use('/api', bookRoutes);
 app.use('/api', userRoutes);
 app.use('/api', orderRoutes);
 
-// Connect to MongoDB
-mongoose.connect('mongodb+srv://Thasniem:thfjd150@mycluster.0ivtg.mongodb.net/?retryWrites=true&w=majority&appName=MyCluster
-')
-    .then(()=> console.log('database connected..'))
-    .catch((err) => console.log(err))
+// MongoDB connection URI (corrected)
+const mongoURI = 'mongodb+srv://Thasniem:thfjd150@mycluster.0ivtg.mongodb.net/?retryWrites=true&w=majority&appName=MyCluster';
 
-app.get('/', (req, res)=>{
-     res.send('server reacted...')
- })
+mongoose.connect(mongoURI)
+  .then(() => console.log('Database connected...'))
+  .catch((err) => console.log('MongoDB connection error:', err));
+
+app.get('/', (req, res) => {
+  res.send('Server is responding...');
+});
 
 // Start the server
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Server is running on http://localhost:${port}`);
 });
