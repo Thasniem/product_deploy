@@ -4,7 +4,8 @@ const app = express();
 const port = 5000;  // Hardcoded port
 
 // MongoDB URI (hardcoded)
-const mongoUri = 'mongodb://localhost:27017/onlinebookstore';  // Change this if needed
+const mongoUri = "mongodb+srv://Thasniem:thfjd150@mycluster.0ivtg.mongodb.net/?retryWrites=true&w=majority&appName=MyCluster
+";  // Change this if needed
 
 // Import routes
 const bookRoutes = require('./routes/bookRoutes');
