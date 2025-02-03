@@ -2,11 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const port = 5000;  // Hardcoded port
-
-// MongoDB URI (hardcoded)
-const mongoUri = "mongodb+srv://Thasniem:thfjd150@mycluster.0ivtg.mongodb.net/?retryWrites=true&w=majority&appName=MyCluster
-";  // Change this if needed
-
 // Import routes
 const bookRoutes = require('./routes/bookRoutes');
 const userRoutes = require('./routes/userRoutes');
@@ -21,7 +16,8 @@ app.use('/api', userRoutes);
 app.use('/api', orderRoutes);
 
 // Connect to MongoDB
-mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://Thasniem:thfjd150@mycluster.0ivtg.mongodb.net/?retryWrites=true&w=majority&appName=MyCluster
+')
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log(err));
 app.get('/', (req, res)=>{
